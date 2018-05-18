@@ -117,11 +117,17 @@ def estoque_cadastrarMateriais(request):
     return render(request, 'estoque_cadastrarMateriais.html', context)
 
 def estoque(request):
-    return render(request, 'estoque.html')
+    materiais = Material.objects.all()
+    context = {
+        'materiais': materiais
+    }
+    return render(request, 'estoque.html', context)
 
 def detalhes_fornecedor(request, slug):
     fornecedor = Fornecedor.objects.get(slug=slug)
+    materiais = FornecedorMaterial.objects.filter(id_fornecedor=fornecedor)
     context = {
-        'fornecedor': fornecedor
+        'fornecedor': fornecedor,
+        'materiais': materiais
     }
     return render(request, 'detalhes_fornecedor.html', context)

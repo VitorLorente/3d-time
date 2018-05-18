@@ -40,7 +40,12 @@
                     <p class="list-group-item-text"><span>Endereço: </span>{{fornecedor.endereco}}</p>
                     <p class="list-group-item-text"><span>Número: </span>{{fornecedor.numero}}</p>
                     <p class="list-group-item-text"><span>Complemento: </span>{{fornecedor.complemento}}</p>
-
+                </span>
+                <h2>Materiais fornecidos:</h2>
+                <span class="list-group-item">
+                    {% for material in materiais %}
+                        <p class="list-group-item-text"><span>{{material.id_material.nome}}</span> - {{material.id_material.descricao}}</p>
+                    {% endfor %}
                 </span>
             </div>
 {% endblock %}

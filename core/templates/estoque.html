@@ -3,25 +3,46 @@
 {% load widget_tweaks %}
 {% block content %}
                 <h1>Estoque</h1>
-                <label for="busca_material"><b>Busca Material</b></label>
-				<input type="text" id="nome_material" required />
+                <i class="fas fa-search icone-pesquisa" id="icone-pesquisa" ></i><input type="text" id="pesquisa-fornecedor" onkeyup="pesquisaFunction()" placeholder="Pesquise por nomes..." title="Digite um nome">
                 <div class="table-responsive table-hover">
-                    <table class="table">
+                    <table class="table" id="table-fornecedor">
                         <tr>
                             <th>Nome</th> 
                             <th>Quantidade</th>
                             <th>Cor</th>
-                            <th>Fornecedor</th>
                             <th>Descrição</th>
                         </tr>
-                        <tr>
-                            <td><a href="detalhes_materiais.html">Filamento PLA</a></td> 
-                            <td>1KG</td>
-                            <td>Azul</td>
-                            <td>GTMAX3D</td>
-                            <td>TESTE</td>
+                        {% for material in materiais %}
+                        <tr "location.href = '/material/{{ material.slug }}';">
+                            <td><a href="detalhes_materiais.html">{{material.nome}}</a></td> 
+                            <td>{{material.qtd}}</td>
+                            <td>{{material.cor}}</td>
+                            <td>{{material.descricao}}</td>
                         </tr>
+                        {% endfor %}
                 </table>
                 <a href="/estoque_cadastrarMateriais" class="btn btn-dark">Cadastrar Material</a>
                 </div>
+
+                <script>
+
+                    function pesquisaFunction() {
+                        var input, filter, table, tr, td, i;
+                        input = document.getElementById("pesquisa-fornecedor");
+                        filter = input.value.toUpperCase();
+                        table = document.getElementById("table-fornecedor");
+                        tr = table.getElementsByTagName("tr");
+                        for (i = 0; i < tr.length; i++) {
+                            td = tr[i].getElementsByTagName("td")[0];
+                            if (td) {
+                                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                    tr[i].style.display = "";
+                                } else {
+                                    tr[i].style.display = "none";
+                                }
+                            }       
+                        }
+                    }
+
+                </script>
 {% endblock %}

@@ -79,7 +79,7 @@ h3 ~ p{
 	cursor: pointer;
 }
 
-.table-fornecedores tr:hover{
+#table-fornecedores tr:hover{
 	cursor: pointer;
 }
 
