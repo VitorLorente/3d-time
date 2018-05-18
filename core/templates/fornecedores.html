@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+                <h1>Fornecedores</h1>
+                <i class="fas fa-search icone-pesquisa" id="icone-pesquisa" ></i><input type="text" id="pesquisa-fornecedor" onkeyup="pesquisaFunction()" placeholder="Pesquise por nomes..." title="Digite um nome">
+                <div class="table-responsive table-hover">
+                    <table class="table" id="table-fornecedores">
+                        <thead>
+                            <th>Nome</th> 
+                            <th>Nome do Contato</th>
+                            <th>Núm. do Contato</th>
+                            <th>E-mail do Contato</th>
+                        </thead>
+                        {% for fornecedor in fornecedores %}
+                            <tr onclick="location.href = '/fornecedor/{{ fornecedor.slug }}';">
+                                
+                                    <td>{{fornecedor.nome_fantasia}}</td> 
+                                    <td>{{fornecedor.nome_contato}}</td>
+                                    <td>{{fornecedor.telefone1}}</td>
+                                    <td>{{fornecedor.e_mail}}</td>
+                            </tr>
+                        {% endfor %}
+                </table>
+                <a href="/cadastro_fornecedor" class="btn btn-dark">Cadastrar fornecedor</a>
+                </div>
+                <script>
+
+                    function pesquisaFunction() {
+                        var input, filter, table, tr, td, i;
+                        input = document.getElementById("pesquisa-fornecedor");
+                        filter = input.value.toUpperCase();
+                        table = document.getElementById("table-fornecedores");
+                        tr = table.getElementsByTagName("tr");
+                        for (i = 0; i < tr.length; i++) {
+                            td = tr[i].getElementsByTagName("td")[0];
+                            if (td) {
+                                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                    tr[i].style.display = "";
+                                } else {
+                                    tr[i].style.display = "none";
+                                }
+                            }       
+                        }
+                    }
+                </script>
+{% endblock %}

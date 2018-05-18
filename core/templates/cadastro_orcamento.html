@@ -1,0 +1,161 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CRM 3D Time - Cadastro de Clientes</title>
+
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/personalizados.css' %}" rel="stylesheet">
+    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        <img src="{% static 'img/logo.svg' %}" width="60%">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Orçamentos</a>
+                </li>
+                <li>
+                    <a href="#">Projetos</a>
+                </li>
+                <li>
+                    <a href="{% url 'clientes' %}">Clientes</a>
+                </li>
+                <li>
+                    <a href="#">Fornecedores</a>
+                </li>
+                <li>
+                    <a href="#">Usuários</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Orçamentos</h1>
+                {{ form.non_field_errors }}
+                <form>
+                {% csrf_token %}
+                    <h2>Cliente</h2>
+                    {{ form.id_cliente.error}}
+                    <label for="nome_cli">Cliente</label>
+                    {{ form.id_cliente}}
+                    <label for="detalhes">Detalhes</label>
+                    <textarea id="detalhes"></textarea>
+                    <hr>
+                    <div class="servicos">
+                        <h2>Serviços</h2>
+                        <span id="add_serv">+ Adicionar serviço</span>
+                        <label for="margem_serv">Margem</label>
+                        <input type="number" id="margem_serv" required />
+                        <table class="table-bordered">
+    						<th>Nome</th>
+                            <th>UN</th>
+                            <th>Custo</th>
+                            <th>Descrição</th>
+                            <th>Total</th>
+                            <tr>
+                                <td><select>
+                                    <option>Modelagel 3D</option>
+                                    <option>Impressão 3D</option>
+                                </select></td>
+                                <td><input type="number" name="unidade" class="unidade calc"></td>
+                                <td><input type="number" name="custo" class="custo calc"></td>
+                                <td><textarea class="desc"></textarea></td>
+                                <td class="total"></td>
+                            </tr>
+                        </table>
+                        <br />
+                        <br />
+                    </div>
+                    <hr>
+                    <div class="complementos">
+                        <h3>Complementos</h3>
+                        <label for="pag_compl">Pagamento</label>
+						<br />
+						<select id="pag_compl" >
+							<option>Depósito</option>
+							<option>Dinheiro</option>
+                        </select>
+                        <br />
+                        <label for="prazo_compl">Prazo</label>
+						<br />
+						<input type="text" id="prazo_compl" required />
+                        <br />
+                        <label for="entre_compl">Entrega</label>
+						<br />
+						<input type="text" id="entre_compl" required />
+                        <br />
+                        <label for="frete_compl">Custo Frete</label>
+						<br />
+						<input type="text" id="frete_compl" required />
+                        <br />
+                        <br />
+                    </div>
+                    
+                    <div class="finalizar">
+                        <label for="desc_final">Desconto</label>
+						<br />
+						<input type="text" id="desc_final" required />
+                        <br />
+                        <a><strong>PREÇO TOTAL: R$<span id="prec_total">0</span></strong></a>
+                        <br />
+                        <a><strong>LUCRO PREV.: R$1.074,40</strong></a>
+                        <br />
+                    </div>
+                    
+                    <br />
+                    <input type="submit" id="enviar" />
+				</form>
+				<br />
+				
+                <a href="#menu-toggle" class="btn btn-secondary " id="menu-toggle">Toggle Menu</a>
+            </div>
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/validations.js' %}"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        console.log(e)
+        $("#wrapper").toggleClass("toggled");
+        $("#sidebar-wrapper").toggleClass("hide_display");
+    });
+    </script>
+
+</body>
+
+</html>

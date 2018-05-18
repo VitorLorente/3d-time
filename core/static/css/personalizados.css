@@ -1,0 +1,91 @@
+form div label, form label{
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-bottom: 0;
+	margin-top: .5em;
+	width: 100%;
+}
+
+table{
+	min-width: 100%;
+}
+form{
+	float: none;
+}
+
+input[type="text"]{
+	width: 100%;
+}
+.dados_cliente{
+	width: 48%;
+	float: left;
+}
+.nome_contato{
+	width: 48%;
+	float: right;
+}
+.local_cliente{
+	float: none;
+}
+select{
+	width: 50%;
+}
+.container-fluid{
+	float: left;
+}
+input[type="submit"]{
+	width: 100%;
+	margin: 3% 0;
+	background-color: #313541;
+}
+textarea{
+	min-width: 100%;
+}
+
+table input{
+	width: 100%;
+	box-sizing: content-box;
+	border: none;	
+	padding: 100;
+
+}
+table textarea{
+	height: 30px;
+	border: none;
+}
+h3 ~ p{
+	font-size: 40px;
+}
+#add_serv{
+	float: right;
+	font-size: 1.2em;
+	text-transform: uppercase;
+}
+#add_serv:hover{
+	background-color: lightgrey;
+	cursor: pointer;
+}
+
+.icone-pesquisa{
+	font-size: 27px;
+	color: darkslategray;
+}
+
+#pesquisa-cliente{
+	width: 30%;
+}
+
+.table-cliente tr:hover{
+	cursor: pointer;
+}
+
+.table-fornecedores tr:hover{
+	cursor: pointer;
+}
+
+#pesquisa-fornecedor{
+	width: 30%;
+}
+/*#margem_serv{
+	float: right;
+}*/

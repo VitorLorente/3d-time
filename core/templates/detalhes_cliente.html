@@ -1,0 +1,116 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CRM 3D Time - Cadastro de Clientes</title>
+
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/personalizados.css' %">
+    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'img/logo.svg' %}" width="60%">
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'home' %}">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Orçamentos</a>
+                </li>
+                <li>
+                    <a href="#">Projetos</a>
+                </li>
+                <li>
+                    <a href="{% url 'clientes' %}">Clientes</a>
+                </li>
+                <li>
+                    <a href="#">Fornecedores</a>
+                </li>
+                <li>
+                    <a href="#">Usuários</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="list-group">
+                <h2>Dados do cliente:</h2>
+                <span class="list-group-item">
+                    <h4 class="list-group-item-heading">Nome do cliente:</h4>
+                    <p class="list-group-item-text">{{ cliente.nome}}</p>
+                </span>
+                <span class="list-group-item">
+                    <h4 class="list-group-item-heading">CNPJ</h4>
+                    <p class="list-group-item-text">{{ cliente.cpf_ou_cnpj}}</p>
+                </span>
+                <span class="list-group-item">
+                    <h4 class="list-group-item-heading">IE</h4>
+                    <p class="list-group-item-text">{{ cliente.ie }}</p>
+                </span>                
+                <span class="list-group-item">
+                    <h4 class="list-group-item-heading">Segmento</h4>
+                    <p class="list-group-item-text">{{ cliente.segmento }}</p>
+                </span>
+                <span class="list-group-item">
+                    <h4 class="list-group-item-heading">Tipo de cliente</h4>
+                    <p class="list-group-item-text">{{ cliente.tipo_cliente }}</p>
+                </span>
+                <h2>Dados do contato:</h2>
+                <span class="list-group-item">
+                    <h4 class="list-group-item-heading"></h4>
+                    <p class="list-group-item-text"><span>Nome: </span>{{ cliente.nome_contato }}</p>
+                    <p class="list-group-item-text"><span>Telefone: </span>{{ cliente.telefone }}</p>
+                    <p class="list-group-item-text"><span>E-mail: </span>{{ cliente.email }}</p>
+                </span>
+                <h2>Endereço da empresa:</h2>
+                <span class="list-group-item">
+                    <p class="list-group-item-text"><span>CEP: </span>{{ cliente.cep }}</p>
+                    <p class="list-group-item-text"><span>UF: </span>{{ cliente.uf }}</p>
+                    <p class="list-group-item-text"><span>Cidade: </span>{{ cliente.cidade }}</p>
+                    <p class="list-group-item-text"><span>Endereço: </span>{{ cliente.endereco }}</p>
+                    <p class="list-group-item-text"><span>Número: </span>{{ cliente.numero }}</p>
+                </span>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js'}"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        console.log(e)
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

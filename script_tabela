@@ -1,0 +1,21 @@
+CREATE TABLE Cliente(
+id INT AUTO_INCREMENT NOT NULL,
+nome VARCHAR(70) NOT NULL,
+cpf_ou_cnpj VARCHAR(17) NOT NULL,
+ie VARCHAR(15) NOT NULL,
+segmento VARCHAR(20) NOT NULL,
+tipo_cliente VARCHAR(6) NOT NULL,
+nome_contato VARCHAR(50) NOT NULL,
+telefone VARCHAR(15) NOT NULL,
+email VARCHAR(45) NOT NULL,
+cep VARCHAR(10) NOT NULL,
+uf CHAR(2) NOT NULL,
+cidade VARCHAR(30) NOT NULL,
+endereco VARCHAR(80) NOT NULL,
+numero VARCHAR(6) NOT NULL,
+
+PRIMARY KEY(id),
+UNIQUE(cpf_ou_cnpj, ie, uf)
+
+);
+

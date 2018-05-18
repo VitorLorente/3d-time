@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+            <div class="list-group">
+                <h2>Dados do Fornecedor:</h2>
+                <span class="list-group-item">
+                    <h4 class="list-group-item-heading">Razão Social:</h4>
+                    <p class="list-group-item-text">{{fornecedor.razao_social}}</p>
+                    <h4 class="list-group-item-heading">Nome Fantasia: </h4>
+                    <p class="list-group-item-text">{{fornecedor.nome_fantasia}}</p>
+                    <p class="list-group-item-text">Data de cadastro: <span>{{fornecedor.data_cadastro}}</span></p>
+                </span>
+                <span class="list-group-item">
+                    <h4 class="list-group-item-heading">CNPJ</h4>
+                    <p class="list-group-item-text"></p>{{fornecedor.cnpj}}</p>
+                </span>
+                <span class="list-group-item">
+                    <h4 class="list-group-item-heading">IE</h4>
+                    <p class="list-group-item-text">{{fornecedor.ie}}</p>
+                </span>                
+                <span class="list-group-item">
+                    <h4 class="list-group-item-heading">Categoria:</h4>
+                    <p class="list-group-item-text">{{fornecedor.categoria}}</p>
+                </span>
+                <h2>Dados do contato:</h2>
+                <span class="list-group-item">
+                    <h4 class="list-group-item-heading"></h4>
+                    <p class="list-group-item-text"><span>Nome: </span>{{fornecedor.nome_contato}}</p>
+                    <p class="list-group-item-text"><span>Telefone 1: </span>{{fornecedor.telefone1}}</p>
+                    <p class="list-group-item-text"><span>Telefone 2: </span>{{fornecedor.telefone2}}</p>
+                    <p class="list-group-item-text"><span>E-mail: </span>{{fornecedor.e_mail}}</p>
+                </span>
+                <h2>Endereço da empresa:</h2>
+                <span class="list-group-item">
+                    <p class="list-group-item-text"><span>CEP: </span>{{fornecedor.cep}}</p>
+                    <p class="list-group-item-text"><span>UF: </span>{{fornecedor.estado}}</p>
+                    <p class="list-group-item-text"><span>Cidade: </span>{{fornecedor.cidade}}</p>
+                    <p class="list-group-item-text"><span>Bairro: </span>{{fornecedor.bairro}}</p>
+                    <p class="list-group-item-text"><span>Endereço: </span>{{fornecedor.endereco}}</p>
+                    <p class="list-group-item-text"><span>Número: </span>{{fornecedor.numero}}</p>
+                    <p class="list-group-item-text"><span>Complemento: </span>{{fornecedor.complemento}}</p>
+
+                </span>
+            </div>
+{% endblock %}

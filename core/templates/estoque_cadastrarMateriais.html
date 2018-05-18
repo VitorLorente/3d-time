@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+                <h1>Cadastro de Materiais</h1>
+                {{ form.non_field_errors }}
+                <form name="cadastro_meterial" id="cadastro_material" method="POST">
+					<div class="dados_material form-group">
+					    {% csrf_token %}
+                        {% for field in form %}
+                            {{ field.error }}
+                            <label for="{{ field.name }}">{{ field.label_tag }}</label>
+                            {{ field|attr:"class:form-control" }}
+                            {% if field.help_text %}
+                                <p class="help">{{ field.help_text|safe }}</p>
+                             {% endif %}
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="btn btn-dark">Cadastrar!</button>
+				</form>
+				<br />
+            {% endblock %}

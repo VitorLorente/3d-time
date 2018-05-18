@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+                <h1>Estoque</h1>
+                <label for="busca_material"><b>Busca Material</b></label>
+				<input type="text" id="nome_material" required />
+                <div class="table-responsive table-hover">
+                    <table class="table">
+                        <tr>
+                            <th>Nome</th> 
+                            <th>Quantidade</th>
+                            <th>Cor</th>
+                            <th>Fornecedor</th>
+                            <th>Descrição</th>
+                        </tr>
+                        <tr>
+                            <td><a href="detalhes_materiais.html">Filamento PLA</a></td> 
+                            <td>1KG</td>
+                            <td>Azul</td>
+                            <td>GTMAX3D</td>
+                            <td>TESTE</td>
+                        </tr>
+                </table>
+                <a href="/estoque_cadastrarMateriais" class="btn btn-dark">Cadastrar Material</a>
+                </div>
+{% endblock %}

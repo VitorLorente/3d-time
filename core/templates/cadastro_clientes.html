@@ -1,0 +1,105 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CRM 3D Time - Cadastro de Clientes</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/personalizados.css' %">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper" class="toggled">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        <img src="{% static 'img/logo.svg' %}" width="60%">
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Orçamentos</a>
+                </li>
+                <li>
+                    <a href="#">Projetos</a>
+                </li>
+                <li>
+                    <a href="{% url 'clientes' %}">Clientes</a>
+                </li>
+                <li>
+                    <a href="#">Fornecedores</a>
+                </li>
+                <li>
+                    <a href="#">Usuários</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Cadastro de Clientes</h1>
+<!--                 <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p> -->
+                {{ form.non_field_errors }}
+                <form name="cadastro_cliente" id="cadastro_cliente" method="POST">
+					<div class="dados_cliente form-group">
+					    {% csrf_token %}
+                        {% for field in form %}
+                            {{ field.error }}
+                            <label for="{{ field.name }}">{{ field.label_tag }}</label>
+                            {{ field|attr:"class:form-control" }}
+                            {% if field.help_text %}
+                                <p class="help">{{ field.help_text|safe }}</p>
+                             {% endif %}
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Cadastrar!</button>
+				</form>
+				<br />
+				
+                <!--<a href="#menu-toggle" class="btn btn-secondary " id="menu-toggle">Toggle Menu</a>-->
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/validations.js' %}"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        console.log(e)
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
